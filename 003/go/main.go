@@ -3,7 +3,8 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Printf("answer: %v\n", getPrimeFactors([]int64 {600851475143}))
+	ans := max(getPrimeFactors([]int64 {600851475143}))
+	fmt.Printf("answer: %v\n", ans)
 }
 
 func getPrimeFactors(numbers []int64) []int64 {
@@ -14,10 +15,11 @@ func getPrimeFactors(numbers []int64) []int64 {
 
 		for ;div < num; div++ {
 			if num%div == 0 && num != div {
-				if containsVal(divisors, div) == -1 {
-					fmt.Printf("adding %v\n", div)
-					divisors = append(divisors, div)
-				}
+				divisors = insert(divisors, div, (num / div))
+			}
+			
+			if (div > (num / div)) {
+				break
 			}
 		}
 	}
@@ -25,8 +27,7 @@ func getPrimeFactors(numbers []int64) []int64 {
 	if (len(divisors) == 0) {
 		return numbers
 	} else {
-		fmt.Println(divisors)
-		return getPrimeFactors(divisors[len(divisors)-1:])
+		return getPrimeFactors(divisors)
 	}
 }
 
@@ -45,3 +46,55 @@ func containsVal(nums []int64, val int64) int {
 
 	return ret
 }
+
+
+func insert(nums []int64, vals ...int64) []int64{
+	for _, v := range vals {
+		if (containsVal(nums, v) == -1) {
+			nums = append(nums, v)
+		}
+	}
+	
+	return nums
+}
+
+func max(numbers []int64) int64 {
+	var max int64
+	
+	for _, n := range numbers {
+		if n > max {
+			max = n
+		}
+	}
+	
+	return max
+}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
