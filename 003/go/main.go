@@ -17,13 +17,13 @@ func getPrimeFactors(numbers []int64) []int64 {
 			if num%div == 0 && num != div {
 				divisors = insert(divisors, div, (num / div))
 			}
-			
+
 			if (div > (num / div)) {
 				break
 			}
 		}
 	}
-	
+
 	if (len(divisors) == 0) {
 		return numbers
 	} else {
@@ -54,47 +54,19 @@ func insert(nums []int64, vals ...int64) []int64{
 			nums = append(nums, v)
 		}
 	}
-	
+
 	return nums
 }
 
 func max(numbers []int64) int64 {
 	var max int64
-	
+
 	for _, n := range numbers {
 		if n > max {
 			max = n
 		}
 	}
-	
+
 	return max
 }
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
